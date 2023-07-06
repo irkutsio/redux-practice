@@ -9,7 +9,10 @@ export const Account = () => {
 
   const dispatch = useDispatch();
 
-  
+  const onChange = (e) => {
+    setValue(Number(e.target.value))
+  }
+  console.log(value)
 
   return (
     <div>
@@ -17,10 +20,11 @@ export const Account = () => {
       <input
         type="number"
         value={value}
-        onChange={e => setValue(Number(e.target.value))}
+        onChange={onChange}
       />
       <button
         onClick={() => {
+          if (!value) return;
           dispatch(deposit(value));
         }}
       >
