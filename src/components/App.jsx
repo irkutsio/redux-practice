@@ -1,11 +1,12 @@
 import { Account } from "./Account/Account";
+import { Products } from "./Products/Products";
 
 export const App = () => {
   return (
     <div
       style={{
         height: '100vh',
-        display: 'flex',
+       
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 16,
@@ -13,6 +14,7 @@ export const App = () => {
       }}
     >
       <Account/>
+      <Products/>
     </div>
   );
 };

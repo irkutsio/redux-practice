@@ -2,6 +2,8 @@
 // import { devToolsEnhancer } from '@redux-devtools/extension';
 import { accountReducer } from './accountSlice';
 import { newsReducer } from './news/newsReducers';
+import { productReduser } from './products/productSlice';
+import { productsApi } from './products/productsAPI';
 import { userReducer } from './userSlice';
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -10,10 +12,12 @@ export const store = configureStore({
     user: userReducer,
     account: accountReducer,
     news: newsReducer,
+    products: productReduser,
+    [productsApi.reducerPath]: productsApi.reducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(productsApi.middleware),
 });
-
-
 
 //================================================
 // ..это под капотом
@@ -29,8 +33,6 @@ export const store = configureStore({
 //   };
 // };
 //==================================================
-
-
 
 // const rootReducer = combineReducers({
 //   user: userReducer,
